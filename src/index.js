@@ -33,7 +33,11 @@ const componentV3 = async () => {
       identityPoolId: IDENTITY_POOL_ID
     })
   });
-  const response = await v3Client.listTemplates({});
+  const response = await v3Client.createApp({
+    CreateApplicationRequest: {
+      Name: "TestApplication792"
+    }
+  });
 
   return getHTMLElement("Data returned:", JSON.stringify(response, null, 2));
 };
