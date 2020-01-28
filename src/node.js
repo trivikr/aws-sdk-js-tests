@@ -1,17 +1,17 @@
 const AWS = require("aws-sdk");
-const { DynamoDB } = require("@aws-sdk/client-dynamodb");
+const { Pinpoint } = require("@aws-sdk/client-pinpoint");
 const { REGION } = require("./config");
 
 (async () => {
   let response;
 
-  const v2Client = new AWS.DynamoDB({ region: REGION });
-  response = await v2Client.listTables().promise();
+  const v2Client = new AWS.Pinpoint({ region: REGION });
+  response = await v2Client.listTemplates().promise();
   console.log("Data returned by v2:");
   console.log(response);
 
-  const v3Client = new DynamoDB({ region: REGION });
-  response = await v3Client.listTables({});
+  const v3Client = new Pinpoint({ region: REGION });
+  response = await v3Client.listTemplates({});
   console.log("\nData returned by v3:");
   console.log(response);
 })();

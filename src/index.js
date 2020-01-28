@@ -1,5 +1,4 @@
-const AWS = require("aws-sdk");
-const { DynamoDB } = require("@aws-sdk/client-dynamodb");
+const { Pinpoint } = require("@aws-sdk/client-pinpoint");
 const {
   fromCognitoIdentityPool
 } = require("@aws-sdk/credential-provider-cognito-identity");
@@ -23,23 +22,8 @@ const getHTMLElement = (title, content) => {
   return element;
 };
 
-const componentV2 = async () => {
-  // Initialize the Amazon Cognito credentials provider
-  AWS.config.region = REGION;
-  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: IDENTITY_POOL_ID
-  });
-  const v2Client = new AWS.DynamoDB();
-  const response = await v2Client.listTables().promise();
-
-  return getHTMLElement(
-    "Data returned by v2:",
-    JSON.stringify(response, null, 2)
-  );
-};
-
 const componentV3 = async () => {
-  const v3Client = new DynamoDB({
+  const v3Client = new Pinpoint({
     region: REGION,
     credentials: fromCognitoIdentityPool({
       client: new CognitoIdentityClient({
@@ -49,15 +33,11 @@ const componentV3 = async () => {
       identityPoolId: IDENTITY_POOL_ID
     })
   });
-  const response = await v3Client.listTables({});
+  const response = await v3Client.listTemplates({});
 
-  return getHTMLElement(
-    "Data returned by v3:",
-    JSON.stringify(response, null, 2)
-  );
+  return getHTMLElement("Data returned:", JSON.stringify(response, null, 2));
 };
 
 (async () => {
-  document.body.appendChild(await componentV2());
   document.body.appendChild(await componentV3());
 })();
