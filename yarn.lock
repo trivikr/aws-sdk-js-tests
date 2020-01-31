@@ -46,6 +46,45 @@
     "@aws-sdk/types" "^1.0.0-alpha.4"
     tslib "^1.8.0"
 
+"@aws-sdk/client-cloudfront@^1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-cloudfront/-/client-cloudfront-1.0.0-alpha.7.tgz#81b6e453dff0704028aaf19e7e5e7acbeb953bb8"
+  integrity sha512-lbufN52n+LVm7Ex9k8W2Z9q0rR+Vg8gsXGMyqstHcwa+pTz1ym35yNE1mFBfuBpady4nYIBP/RR7KtnDo4+knA==
+  dependencies:
+    "@aws-crypto/sha256-browser" "^0.1.0-preview.4"
+    "@aws-sdk/config-resolver" "^1.0.0-alpha.8"
+    "@aws-sdk/credential-provider-node" "^1.0.0-alpha.4"
+    "@aws-sdk/fetch-http-handler" "^1.0.0-alpha.6"
+    "@aws-sdk/hash-node" "^1.0.0-alpha.4"
+    "@aws-sdk/invalid-dependency" "^1.0.0-alpha.2"
+    "@aws-sdk/middleware-content-length" "^1.0.0-alpha.6"
+    "@aws-sdk/middleware-host-header" "^1.0.0-alpha.6"
+    "@aws-sdk/middleware-retry" "^1.0.0-alpha.6"
+    "@aws-sdk/middleware-serde" "^1.0.0-alpha.4"
+    "@aws-sdk/middleware-signing" "^1.0.0-alpha.8"
+    "@aws-sdk/middleware-stack" "^1.0.0-alpha.4"
+    "@aws-sdk/middleware-user-agent" "^1.0.0-alpha.6"
+    "@aws-sdk/node-http-handler" "^1.0.0-alpha.7"
+    "@aws-sdk/protocol-http" "^1.0.0-alpha.6"
+    "@aws-sdk/region-provider" "^1.0.0-alpha.4"
+    "@aws-sdk/smithy-client" "^1.0.0-alpha.4"
+    "@aws-sdk/stream-collector-browser" "^1.0.0-alpha.4"
+    "@aws-sdk/stream-collector-node" "^1.0.0-alpha.4"
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    "@aws-sdk/url-parser-browser" "^1.0.0-alpha.4"
+    "@aws-sdk/url-parser-node" "^1.0.0-alpha.4"
+    "@aws-sdk/util-base64-browser" "^1.0.0-alpha.2"
+    "@aws-sdk/util-base64-node" "^1.0.0-alpha.2"
+    "@aws-sdk/util-body-length-browser" "^1.0.0-alpha.2"
+    "@aws-sdk/util-body-length-node" "^1.0.0-alpha.2"
+    "@aws-sdk/util-user-agent-browser" "^1.0.0-alpha.6"
+    "@aws-sdk/util-user-agent-node" "^1.0.0-alpha.6"
+    "@aws-sdk/util-utf8-browser" "^1.0.0-alpha.2"
+    "@aws-sdk/util-utf8-node" "^1.0.0-alpha.2"
+    "@aws-sdk/xml-builder" "^1.0.0-alpha.4"
+    pixl-xml "^1.0.13"
+    tslib "^1.8.0"
+
 "@aws-sdk/client-cognito-identity@^1.0.0-alpha.11":
   version "1.0.0-alpha.11"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-cognito-identity/-/client-cognito-identity-1.0.0-alpha.11.tgz#167aae2017a768e5d5402cf5fb30fdce1bff2ed0"
@@ -255,6 +294,17 @@
   version "1.0.0-alpha.6"
   resolved "https://registry.yarnpkg.com/@aws-sdk/node-http-handler/-/node-http-handler-1.0.0-alpha.6.tgz#3f35f01f17f3d6f0ce5042355ee399c01e68bf7b"
   integrity sha512-n0b+Czrv71eYkXuFTc0OH1dvV4SAuTEQMeHnGiwDIVAhUW0r9cBCYZG+0OXkd9KRtRGy7MboKz7XnYc101OCQg==
+  dependencies:
+    "@aws-sdk/abort-controller" "^1.0.0-alpha.4"
+    "@aws-sdk/protocol-http" "^1.0.0-alpha.6"
+    "@aws-sdk/querystring-builder" "^1.0.0-alpha.4"
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    tslib "^1.8.0"
+
+"@aws-sdk/node-http-handler@^1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/node-http-handler/-/node-http-handler-1.0.0-alpha.7.tgz#b8fa788cb1b97226969a6c108750e85b3c60886a"
+  integrity sha512-c9IY5cROiRUmXO03RRiuaoE3cAQZvWE5UVdMKkc4J6wjHb3ikatbed5N7k1b32NXYOLVbZSXguDCrJG/gX/oIg==
   dependencies:
     "@aws-sdk/abort-controller" "^1.0.0-alpha.4"
     "@aws-sdk/protocol-http" "^1.0.0-alpha.6"
@@ -472,6 +522,13 @@
   integrity sha512-Lc+/mJiPcVEV0DJfMBnmqGuktlCX2tz/W7odUDMgCtBVNp97z5xK6aYcMSOQuCQofEGZzSaFHYqwBZLXGdFEJg==
   dependencies:
     "@aws-sdk/util-buffer-from" "^1.0.0-alpha.2"
+    tslib "^1.8.0"
+
+"@aws-sdk/xml-builder@^1.0.0-alpha.4":
+  version "1.0.0-alpha.4"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/xml-builder/-/xml-builder-1.0.0-alpha.4.tgz#637f4e4e71b401d4f498bc0dc3e09079f89f4e9d"
+  integrity sha512-XM7f4UyBPf0sqo1F4ek8Qln9/ZXv2No15y70FiaNFCkQr+qAYakAjZUO3JWntM8o7ybof5XoMxQIBZwaMj9Q6w==
+  dependencies:
     tslib "^1.8.0"
 
 "@babel/code-frame@^7.0.0":
@@ -2942,6 +2999,11 @@ pify@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/pify/-/pify-4.0.1.tgz#4b2cd25c50d598735c50292224fd8c6df41e3231"
   integrity sha512-uB80kBFb/tfd68bVleG9T5GGsGPjJrLAUpR5PZIrhBnIaRTQRjqdJSsIKkOP6OAIFbj7GOrcudc5pNjZ+geV2g==
+
+pixl-xml@^1.0.13:
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/pixl-xml/-/pixl-xml-1.0.13.tgz#5ba71408bdf37994c239dd01251c10c53c0587e3"
+  integrity sha1-W6cUCL3zeZTCOd0BJRwQxTwFh+M=
 
 pkg-dir@^3.0.0:
   version "3.0.0"
