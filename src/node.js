@@ -1,5 +1,6 @@
 const AWS = require("aws-sdk");
 const { S3 } = require("@aws-sdk/client-s3");
+const { REGION } = require("./config");
 
 (async () => {
   let response;
@@ -13,7 +14,7 @@ const { S3 } = require("@aws-sdk/client-s3");
   };
   const objectName = "ExampleObject.jpg";
 
-  const v2Client = new AWS.S3();
+  const v2Client = new AWS.S3({ region: REGION });
   console.log(`Creating bucket ${bucketName}`);
   await v2Client.createBucket(params).promise();
   console.log(`Waiting for "${bucketName}" bucket creation`);
@@ -32,7 +33,7 @@ const { S3 } = require("@aws-sdk/client-s3");
   console.log("Data returned by v2:");
   console.log(JSON.stringify(response, null, 2));
 
-  const v3Client = new S3();
+  const v3Client = new S3({ region: REGION });
   response = await v3Client.listObjects(params);
   console.log("\nData returned by v3:");
   console.log(JSON.stringify(response, null, 2));
