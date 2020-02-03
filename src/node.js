@@ -5,24 +5,11 @@ const { promisify } = require("util");
 const sleep = promisify(setTimeout);
 
 (async () => {
-  const bucketName =
-    "test-bucket-" +
-    Math.random()
-      .toString(36)
-      .substring(2);
-  const params = {
-    Bucket: bucketName
-  };
+  // Bucket created from console for testing
+  const bucketName = "test-bucket-fast-xml-parser";
   const objectName = "ExampleObject.jpg";
 
   const v3Client = new S3({ region: REGION });
-
-  console.log(`Creating bucket ${bucketName}`);
-  await v3Client.createBucket(params);
-
-  console.log(`Waiting for "${bucketName}" bucket creation`);
-  // waiter not available yet, just sleep for 5 seconds
-  await sleep(5000);
 
   console.log(`Putting object ${objectName} in ${bucketName}...`);
   await v3Client.putObject({
@@ -31,7 +18,7 @@ const sleep = promisify(setTimeout);
     Key: objectName
   });
 
-  const response = await v3Client.listObjects(params);
+  const response = await v3Client.listObjects({ Bucket: bucketName });
   console.log("\nData returned by v3:");
   console.log(JSON.stringify(response, null, 2));
 
@@ -40,7 +27,4 @@ const sleep = promisify(setTimeout);
     Bucket: bucketName,
     Key: objectName
   });
-
-  console.log(`Deleting bucket ${bucketName}`);
-  await v3Client.deleteBucket(params);
 })();
