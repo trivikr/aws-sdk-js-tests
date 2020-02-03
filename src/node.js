@@ -3,7 +3,6 @@ const { S3 } = require("@aws-sdk/client-s3");
 const { REGION } = require("./config");
 
 (async () => {
-  let response;
   const bucketName =
     "test-bucket-" +
     Math.random()
@@ -12,40 +11,28 @@ const { REGION } = require("./config");
   const params = {
     Bucket: bucketName
   };
-  const objectName = "ExampleObject.jpg";
 
   const v2Client = new AWS.S3({ region: REGION });
-  console.log(`Creating bucket ${bucketName}`);
+
+  console.log(`Creating bucket ${params.Bucket}`);
   await v2Client.createBucket(params).promise();
-  console.log(`Waiting for "${bucketName}" bucket creation`);
+
+  console.log(`\nWaiting for "${params.Bucket}" bucket creation`);
   await v2Client.waitFor("bucketExists", params).promise();
 
-  console.log(`Putting object ${objectName} in ${bucketName}...`);
-  await v2Client
-    .putObject({
-      Body: "000000",
-      Bucket: bucketName,
-      Key: objectName
-    })
-    .promise();
-
-  response = await v2Client.listObjects(params).promise();
-  console.log("Data returned by v2:");
-  console.log(JSON.stringify(response, null, 2));
-
-  const v3Client = new S3({ region: REGION });
-  response = await v3Client.listObjects(params);
-  console.log("\nData returned by v3:");
-  console.log(JSON.stringify(response, null, 2));
-
-  console.log(`Deleting ${objectName} from ${bucketName}`);
-  await v2Client
-    .deleteObject({
-      Bucket: bucketName,
-      Key: objectName
-    })
-    .promise();
-
-  console.log(`Deleting bucket ${bucketName}`);
+  console.log(`\nDeleting bucket ${params.Bucket}`);
   await v2Client.deleteBucket(params).promise();
+
+  params.Bucket = `${bucketName}-v3`;
+  const v3Client = new S3({ region: REGION });
+
+  console.log(`\nCreating bucket ${params.Bucket}`);
+  await v3Client.createBucket(params);
+
+  console.log(`\nWaiting for "${params.Bucket}" bucket creation`);
+  // Use waiters from v3, as v2 waiters are not available
+  await v2Client.waitFor("bucketExists", params).promise();
+
+  console.log(`\nDeleting bucket ${params.Bucket}`);
+  await v3Client.deleteBucket(params);
 })();
