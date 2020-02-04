@@ -1,17 +1,24 @@
-const AWS = require("aws-sdk");
-const { DynamoDB } = require("@aws-sdk/client-dynamodb");
+const { SQS } = require("@aws-sdk/client-sqs");
 const { REGION } = require("./config");
 
 (async () => {
   let response;
+  const QueueNamePrefix = "test-queue-";
 
-  const v2Client = new AWS.DynamoDB({ region: REGION });
-  response = await v2Client.listTables().promise();
-  console.log("Data returned by v2:");
-  console.log(JSON.stringify(response, null, 2));
+  const v3Client = new SQS({ region: REGION });
 
-  const v3Client = new DynamoDB({ region: REGION });
-  response = await v3Client.listTables({});
+  response = await v3Client.listQueues({ QueueNamePrefix });
   console.log("\nData returned by v3:");
   console.log(JSON.stringify(response, null, 2));
+  if (Array.isArray(response.QueueUrls)) {
+    console.log(`Deleting existing queues`);
+    await Promise.all(
+      response.QueueUrls.map(QueueUrl => {
+        console.log(`* Deleting ${QueueUrl}`);
+        return v3Client.deleteQueue({
+          QueueUrl
+        });
+      })
+    );
+  }
 })();
