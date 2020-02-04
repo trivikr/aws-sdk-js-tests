@@ -1,6 +1,9 @@
 const { SQS } = require("@aws-sdk/client-sqs");
 const { REGION } = require("./config");
 
+const { promisify } = require("util");
+const sleep = promisify(setTimeout);
+
 const deleteQueuesIfPresent = async (client, queueUrls) => {
   if (Array.isArray(queueUrls)) {
     console.log(`Deleting existing queues`);
@@ -12,7 +15,11 @@ const deleteQueuesIfPresent = async (client, queueUrls) => {
         });
       })
     );
+    // Waiter not present in SQS, wait for 10 seconds for operation
+    console.log(`\nAwaiting 10 seconds for deletion`);
+    await sleep(10000);
   }
+  console.log("Promise deletion complete");
 };
 
 const getRandomString = () =>
@@ -37,6 +44,10 @@ const getRandomString = () =>
     QueueName: `${QueueNamePrefix}${getRandomString()}`
   });
 
+  // Waiter not present in SQS, wait for 10 seconds for operation
+  console.log(`\nAwaiting 10 seconds for creation`);
+  await sleep(10000);
+
   response = await v3Client.listQueues({ QueueNamePrefix });
   console.log("\nlistQueues outout with one result:");
   console.log(JSON.stringify(response, null, 2));
@@ -44,6 +55,10 @@ const getRandomString = () =>
   await v3Client.createQueue({
     QueueName: `${QueueNamePrefix}${getRandomString()}`
   });
+
+  // Waiter not present in SQS, wait for 10 seconds for operation
+  console.log(`\nAwaiting 10 seconds for creation`);
+  await sleep(10000);
 
   response = await v3Client.listQueues({ QueueNamePrefix });
   console.log("\nlistQueues outout with two results:");
