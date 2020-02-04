@@ -1,5 +1,10 @@
 const AWS = require("aws-sdk");
-const { DynamoDB } = require("@aws-sdk/client-dynamodb");
+const Pinpoint = require("aws-sdk/clients/pinpoint");
+
+const {
+  PinpointClient,
+  UpdateEndpointCommand
+} = require("@aws-sdk/client-pinpoint");
 const {
   fromCognitoIdentityPool
 } = require("@aws-sdk/credential-provider-cognito-identity");
@@ -26,11 +31,18 @@ const getHTMLElement = (title, content) => {
 const componentV2 = async () => {
   // Initialize the Amazon Cognito credentials provider
   AWS.config.region = REGION;
-  AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+  const creds = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: IDENTITY_POOL_ID
   });
-  const v2Client = new AWS.DynamoDB();
-  const response = await v2Client.listTables().promise();
+  AWS.config.credentials = creds;
+  const v2Client = new Pinpoint({ REGION, creds });
+  const response = await v2Client
+    .updateEndpoint({
+      ApplicationId: "1e53bcfd862d45fc882a32cc0e20172a",
+      EndpointId: "268910f3-46ea-11ea-943f-d73c2ef9bb3b",
+      EndpointRequest: {}
+    })
+    .promise();
 
   return getHTMLElement(
     "Data returned by v2:",
@@ -39,7 +51,7 @@ const componentV2 = async () => {
 };
 
 const componentV3 = async () => {
-  const v3Client = new DynamoDB({
+  const v3Client = new PinpointClient({
     region: REGION,
     credentials: fromCognitoIdentityPool({
       client: new CognitoIdentityClient({
@@ -49,7 +61,13 @@ const componentV3 = async () => {
       identityPoolId: IDENTITY_POOL_ID
     })
   });
-  const response = await v3Client.listTables({});
+  const response = await v3Client.send(
+    new UpdateEndpointCommand({
+      ApplicationId: "1e53bcfd862d45fc882a32cc0e20172a",
+      EndpointId: "268910f3-46ea-11ea-943f-d73c2ef9bb3b",
+      EndpointRequest: {}
+    })
+  );
 
   return getHTMLElement(
     "Data returned by v3:",
