@@ -21,13 +21,16 @@ const waitForQueueExists = async (client, createdQueueUrl) => {
 };
 
 const waitForQueueNotExists = async (client, deletedQueueUrl) => {
+  console.log(`Deleted queueUrl: ${deletedQueueUrl}\n`);
   let queueExists = true;
   while (queueExists) {
     const response = await client.listQueues({});
+    console.log(JSON.stringify(response, null, 2));
     const queueUrls = response.QueueUrls;
     if (Array.isArray(queueUrls)) {
       queueExists = false;
       queueUrls.forEach(queueUrl => {
+        console.log(`Received queueUrl: ${queueUrl}`);
         if (queueUrl === deletedQueueUrl) {
           queueExists = true;
         }
@@ -96,5 +99,5 @@ const getRandomString = () =>
   console.log("\nlistQueues outout with two results:");
   console.log(JSON.stringify(response, null, 2));
 
-  await deleteQueuesIfPresent(v3Client, response.QueueUrls);
+  // await deleteQueuesIfPresent(v3Client, response.QueueUrls);
 })();
