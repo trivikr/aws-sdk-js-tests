@@ -7,10 +7,10 @@ const { CognitoIdentityClient } = require("@aws-sdk/client-cognito-identity");
 const { REGION, IDENTITY_POOL_ID } = require("./config");
 
 const getTextToPost = () => ({
-  botName: "ScheduleAppointment",
-  botAlias: "TestAlias",
-  userId: "random",
-  inputText: "random"
+  botAlias: "$LATEST",
+  botName: "BookTrip_devoa",
+  inputText: "Book My Hotel",
+  userId: "random"
 });
 
 const getHTMLElement = (title, content) => {
