@@ -83,10 +83,10 @@
     "@aws-sdk/util-utf8-node" "^1.0.0-alpha.2"
     tslib "^1.8.0"
 
-"@aws-sdk/client-lex-runtime-service@^1.0.0-alpha.11":
-  version "1.0.0-alpha.11"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-lex-runtime-service/-/client-lex-runtime-service-1.0.0-alpha.11.tgz#0a32fa517d19ffcdd48762c88cec1dfc6e005ba4"
-  integrity sha512-5xUHetvNYZ2lRtX8GvVw4cPZ+GG+XruOffrEoHBgRdkY0eXY2vQmjTLChpoHb3S09yWzpDP04ygYDYp2moJegw==
+"@aws-sdk/client-lex-runtime-service@^1.0.0-alpha.13":
+  version "1.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-lex-runtime-service/-/client-lex-runtime-service-1.0.0-alpha.13.tgz#68c33cc72de2cb7430993bc6e826bc58d358d236"
+  integrity sha512-WaufaiVaAgk4W39GLQlaOZxSMZap49VDgG+dSD6HS9mziCawdpTI5XRsgcEtWYQmShnHevkM1vthnI/R6648tw==
   dependencies:
     "@aws-crypto/sha256-browser" "^0.1.0-preview.4"
     "@aws-sdk/config-resolver" "^1.0.0-alpha.8"
@@ -100,11 +100,11 @@
     "@aws-sdk/middleware-serde" "^1.0.0-alpha.4"
     "@aws-sdk/middleware-signing" "^1.0.0-alpha.8"
     "@aws-sdk/middleware-stack" "^1.0.0-alpha.4"
-    "@aws-sdk/middleware-user-agent" "^1.0.0-alpha.6"
+    "@aws-sdk/middleware-user-agent" "^1.0.0-alpha.7"
     "@aws-sdk/node-http-handler" "^1.0.0-alpha.7"
     "@aws-sdk/protocol-http" "^1.0.0-alpha.6"
     "@aws-sdk/region-provider" "^1.0.0-alpha.4"
-    "@aws-sdk/smithy-client" "^1.0.0-alpha.4"
+    "@aws-sdk/smithy-client" "^1.0.0-alpha.5"
     "@aws-sdk/stream-collector-browser" "^1.0.0-alpha.4"
     "@aws-sdk/stream-collector-node" "^1.0.0-alpha.4"
     "@aws-sdk/types" "^1.0.0-alpha.4"
@@ -114,8 +114,8 @@
     "@aws-sdk/util-base64-node" "^1.0.0-alpha.2"
     "@aws-sdk/util-body-length-browser" "^1.0.0-alpha.2"
     "@aws-sdk/util-body-length-node" "^1.0.0-alpha.2"
-    "@aws-sdk/util-user-agent-browser" "^1.0.0-alpha.6"
-    "@aws-sdk/util-user-agent-node" "^1.0.0-alpha.6"
+    "@aws-sdk/util-user-agent-browser" "^1.0.0-alpha.7"
+    "@aws-sdk/util-user-agent-node" "^1.0.0-alpha.7"
     "@aws-sdk/util-utf8-browser" "^1.0.0-alpha.2"
     "@aws-sdk/util-utf8-node" "^1.0.0-alpha.2"
     tslib "^1.8.0"
@@ -288,6 +288,15 @@
     "@aws-sdk/types" "^1.0.0-alpha.4"
     tslib "^1.8.0"
 
+"@aws-sdk/middleware-user-agent@^1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/middleware-user-agent/-/middleware-user-agent-1.0.0-alpha.7.tgz#63cdaca0966f6f8801e2a3b4627db7b1fab740c2"
+  integrity sha512-Z5hfEeDiijhxQzApR9EYUWH1gTaIRXNaOM6Hc7p5zd/aiLpra6cBQQeYB7ozvMDLe6qU+ZNXEUGmhBRehLVsLg==
+  dependencies:
+    "@aws-sdk/protocol-http" "^1.0.0-alpha.6"
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    tslib "^1.8.0"
+
 "@aws-sdk/node-http-handler@^1.0.0-alpha.6":
   version "1.0.0-alpha.6"
   resolved "https://registry.yarnpkg.com/@aws-sdk/node-http-handler/-/node-http-handler-1.0.0-alpha.6.tgz#3f35f01f17f3d6f0ce5042355ee399c01e68bf7b"
@@ -389,6 +398,15 @@
   version "1.0.0-alpha.4"
   resolved "https://registry.yarnpkg.com/@aws-sdk/smithy-client/-/smithy-client-1.0.0-alpha.4.tgz#e90307ed6c59aca5313a835146bb64a1a906aaca"
   integrity sha512-NavgIAwP9R3KRyiJml8aSB3qM60VvOy007pTqu6u4+KE848uPP7XAGI86ix8E2eOj3PcmGtChDYVrbETbI805Q==
+  dependencies:
+    "@aws-sdk/middleware-stack" "^1.0.0-alpha.4"
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    tslib "^1.8.0"
+
+"@aws-sdk/smithy-client@^1.0.0-alpha.5":
+  version "1.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/smithy-client/-/smithy-client-1.0.0-alpha.5.tgz#166968ae901c312d1ff992d4b17af73978848908"
+  integrity sha512-oLbeS0E0r0pUGhDdjVr/VKsO9AfR9ZEJl3uS8RKBvwn+K7moxIezD/Q15x2DLJ8dBAapUbftQMP6AuVkAS7W5g==
   dependencies:
     "@aws-sdk/middleware-stack" "^1.0.0-alpha.4"
     "@aws-sdk/types" "^1.0.0-alpha.4"
@@ -499,10 +517,26 @@
     "@aws-sdk/types" "^1.0.0-alpha.4"
     tslib "^1.8.0"
 
+"@aws-sdk/util-user-agent-browser@^1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/util-user-agent-browser/-/util-user-agent-browser-1.0.0-alpha.7.tgz#39ef63a795af074f6e8098edc9e0c107fdc4b208"
+  integrity sha512-b1ruZmDgamLpWKE0PQBCiEVGh4rNJWk/qeEdgtkvh4E05Vug6UGLmVSderXTTj8VZqFvVS9yvoIqHzsWGNfv7w==
+  dependencies:
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    tslib "^1.8.0"
+
 "@aws-sdk/util-user-agent-node@^1.0.0-alpha.6":
   version "1.0.0-alpha.6"
   resolved "https://registry.yarnpkg.com/@aws-sdk/util-user-agent-node/-/util-user-agent-node-1.0.0-alpha.6.tgz#aed61f7d90900d7daa5c375d4fe6550a4bf5b2f1"
   integrity sha512-0NCJbvg0FGVt0hdrGlLfSL/XboY8vBf5YNt1ZwEAPr4BfOD0zSTutVyhcVf6gmbpCiMt8X6ceH78B57UMA1kqA==
+  dependencies:
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    tslib "^1.8.0"
+
+"@aws-sdk/util-user-agent-node@^1.0.0-alpha.7":
+  version "1.0.0-alpha.7"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/util-user-agent-node/-/util-user-agent-node-1.0.0-alpha.7.tgz#e9fd994e5a3b777442095503d2da32bf1cdc3bba"
+  integrity sha512-0tPh7MeNFnV7maxtEdo93MFe1kDcmBPH1F4TiJy5FnNPqr3Ym/taTnBlkNrJqv6ZD5FkW0dhmAhP0VciPzNOfg==
   dependencies:
     "@aws-sdk/types" "^1.0.0-alpha.4"
     tslib "^1.8.0"
