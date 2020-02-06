@@ -1,13 +1,16 @@
 const AWS = require("aws-sdk");
-const Rekognition = require("aws-sdk/clients/rekognition");
-
+const s3 = require("aws-sdk/clients/s3");
 const {
-  RekognitionClient,
-  DetectTextCommand
-} = require("@aws-sdk/client-rekognition");
+  S3Client,
+  PutObjectCommand,
+  GetObjectCommand
+} = require("@aws-sdk/client-s3");
 const {
   fromCognitoIdentityPool
 } = require("@aws-sdk/credential-provider-cognito-identity");
+const { formatUrl } = require("@aws-sdk/util-format-url");
+const { createRequest } = require("@aws-sdk/util-create-request");
+const { S3RequestPresigner } = require("@aws-sdk/s3-request-presigner");
 const { CognitoIdentityClient } = require("@aws-sdk/client-cognito-identity");
 const { REGION, IDENTITY_POOL_ID } = require("./config");
 
@@ -35,24 +38,62 @@ const componentV2 = async file => {
     IdentityPoolId: IDENTITY_POOL_ID
   });
   AWS.config.credentials = creds;
-  const v2Client = new Rekognition({ REGION, creds });
+  const v2Client = new s3({ REGION, creds });
   let response = null,
     error = null;
 
   try {
-    response = await v2Client.detectText({ Image: { Bytes: file } }).promise();
+    response = await v2Client
+      .putObject({
+        Body: "Anything works",
+        Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
+        Key: "public/Name that has space.jpg"
+      })
+      .promise();
   } catch (e) {
     error = e;
   }
 
-  return getHTMLElement(
-    "Data returned by v2:",
-    JSON.stringify(error || response, null, 2)
+  document.body.appendChild(
+    getHTMLElement(
+      "Data returned by v2: with space",
+      JSON.stringify(error || response, null, 2)
+    )
+  );
+
+  response = null;
+  error = null;
+
+  try {
+    response = await v2Client
+      .putObject({
+        Body: "Anything works",
+        Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
+        Key: "public/NameThatHasNoSpace1.jpg"
+      })
+      .promise();
+  } catch (e) {
+    error = e;
+  }
+  document.body.appendChild(
+    getHTMLElement(
+      "Data returned by v2: without space",
+      JSON.stringify(error || response, null, 2)
+    )
+  );
+
+  // Get signed URL
+  const url = v2Client.getSignedUrl("getObject", {
+    Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
+    Key: "public/NameThatHasNoSpace.jpg"
+  });
+  document.body.appendChild(
+    getHTMLElement("Data returned by v2: getSignedURL", url)
   );
 };
 
 const componentV3 = async file => {
-  const v3Client = new RekognitionClient({
+  const v3Client = new S3Client({
     region: REGION,
     credentials: fromCognitoIdentityPool({
       client: new CognitoIdentityClient({
@@ -67,53 +108,61 @@ const componentV3 = async file => {
 
   try {
     response = await v3Client.send(
-      new DetectTextCommand({ Image: { Bytes: file } })
+      new PutObjectCommand({
+        Body: "Anything works",
+        Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
+        Key: "public/Name that has space.jpg"
+      })
     );
   } catch (e) {
     error = e;
   }
 
-  return getHTMLElement(
-    "Data returned by v3:",
-    JSON.stringify(error || response, null, 2)
+  document.body.appendChild(
+    getHTMLElement(
+      "Data returned by v3: with space",
+      JSON.stringify(error || response, null, 2)
+    )
+  );
+
+  // works when file has no special characters
+  response = null;
+  error = null;
+
+  try {
+    response = await v3Client.send(
+      new PutObjectCommand({
+        Body: "Anything works",
+        Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
+        Key: "public/NameThatHasNoSpace.jpg"
+      })
+    );
+  } catch (e) {
+    error = e;
+  }
+  document.body.appendChild(
+    getHTMLElement(
+      "Data returned by v3: without space",
+      JSON.stringify(error || response, null, 2)
+    )
+  );
+
+  // Get signed URL
+  const params = {
+    Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
+    Key: "public/NameThatHasNoSpace.jpg"
+  };
+  params.Expires = new Date(Date.now() + 900 * 1000);
+  const signer = new S3RequestPresigner({ ...v3Client.config });
+  const request = await createRequest(v3Client, new GetObjectCommand(params));
+  console.log("from createRequest", request);
+  const url = formatUrl(await signer.presignRequest(request, params.Expires));
+  document.body.appendChild(
+    getHTMLElement("Data returned by v3: getSignedURL", url)
   );
 };
 
-async function identifyFromFile(event) {
-  console.log("Identifying...");
-  const {
-    target: { files }
-  } = event;
-  const [file] = files || [];
-
-  if (!file) {
-    return;
-  }
-  try {
-    document.body.appendChild(await componentV2(await blobToArrayBuffer(file)));
-    document.body.appendChild(await componentV3(await blobToArrayBuffer(file)));
-  } catch {
-    // Regardless execute V3
-    document.body.appendChild(await componentV3(await blobToArrayBuffer(file)));
-  }
-}
-window.onchange = identifyFromFile;
-
-function blobToArrayBuffer(blob) {
-  return new Promise((res, rej) => {
-    const reader = new FileReader();
-    reader.onload = _event => {
-      res(reader.result);
-    };
-    reader.onerror = err => {
-      rej(err);
-    };
-    try {
-      reader.readAsArrayBuffer(blob);
-    } catch (err) {
-      rej(err); // in case user gives invalid type
-    }
-  });
-}
-
-(async () => {})();
+(async () => {
+  await componentV2();
+  await componentV3();
+})();

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "watch": "webpack --mode development --watch"
+    "watch": "webpack --mode development --watch --config ./webpack.config.js --hot=true"
   },
   "repository": {
     "type": "git",
@@ -34,12 +34,18 @@
   "lint-staged": {
     "*.{js,css,json,md}": "prettier --write"
   },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
+  },
   "dependencies": {
     "@aws-sdk/client-cognito-identity": "^1.0.0-alpha.11",
-    "@aws-sdk/client-dynamodb": "^1.0.0-alpha.11",
-    "@aws-sdk/client-pinpoint": "^1.0.0-alpha.12",
-    "@aws-sdk/client-rekognition": "^1.0.0-alpha.14",
+    "@aws-sdk/client-s3": "^1.0.0-alpha.10",
     "@aws-sdk/credential-provider-cognito-identity": "^1.0.0-alpha.9",
+    "@aws-sdk/s3-request-presigner": "^1.0.0-alpha.10",
+    "@aws-sdk/util-create-request": "^1.0.0-alpha.9",
+    "@aws-sdk/util-format-url": "^1.0.0-alpha.4",
     "aws-sdk": "^2.609.0"
   }
 }
