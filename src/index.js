@@ -47,7 +47,7 @@ const componentV2 = async file => {
       .putObject({
         Body: "Anything works",
         Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
-        Key: "public/Name that has space.jpg"
+        Key: "public/Name that has space.txt"
       })
       .promise();
   } catch (e) {
@@ -69,7 +69,7 @@ const componentV2 = async file => {
       .putObject({
         Body: "Anything works",
         Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
-        Key: "public/NameThatHasNoSpace1.jpg"
+        Key: "public/NameThatHasNoSpace1.txt"
       })
       .promise();
   } catch (e) {
@@ -85,7 +85,7 @@ const componentV2 = async file => {
   // Get signed URL
   const url = v2Client.getSignedUrl("getObject", {
     Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
-    Key: "public/NameThatHasNoSpace.jpg"
+    Key: "public/NameThatHasNoSpace.txt"
   });
   document.body.appendChild(
     getHTMLElement("Data returned by v2: getSignedURL", url)
@@ -111,7 +111,7 @@ const componentV3 = async file => {
       new PutObjectCommand({
         Body: "Anything works",
         Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
-        Key: "public/Name that has space.jpg"
+        Key: "public/Name that has space.txt"
       })
     );
   } catch (e) {
@@ -134,7 +134,7 @@ const componentV3 = async file => {
       new PutObjectCommand({
         Body: "Anything works",
         Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
-        Key: "public/NameThatHasNoSpace.jpg"
+        Key: "public/NameThatHasNoSpace.txt"
       })
     );
   } catch (e) {
@@ -150,7 +150,7 @@ const componentV3 = async file => {
   // Get signed URL
   const params = {
     Bucket: "analytics3d5167b766084a44803d0ccb49a6eb66-devoa",
-    Key: "public/NameThatHasNoSpace.jpg"
+    Key: "public/NameThatHasNoSpace.txt"
   };
   params.Expires = new Date(Date.now() + 900 * 1000);
   const signer = new S3RequestPresigner({ ...v3Client.config });
