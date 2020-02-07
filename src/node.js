@@ -25,7 +25,7 @@ const { REGION } = require("./config");
       .promise();
   } catch (error) {
     console.log(`Error from v2:`);
-    console.log(JSON.stringify(error, null, 2));
+    console.log(error);
   }
 
   try {
@@ -36,6 +36,6 @@ const { REGION } = require("./config");
     });
   } catch (error) {
     console.log(`\nError from v3:`);
-    console.log(JSON.stringify(error, null, 2));
+    console.log(error);
   }
 })();
