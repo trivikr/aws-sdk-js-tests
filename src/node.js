@@ -1,17 +1,20 @@
 const AWS = require("aws-sdk");
-const { DynamoDB } = require("@aws-sdk/client-dynamodb");
+const { CognitoSync } = require("@aws-sdk/client-cognito-sync");
 const { REGION } = require("./config");
 
 (async () => {
-  let response;
+  const params = {
+    IdentityPoolId: "INVALID",
+    IdentityId: "A:B:C"
+  };
+  const v3Client = new CognitoSync({ region: REGION });
 
-  const v2Client = new AWS.DynamoDB({ region: REGION });
-  response = await v2Client.listTables().promise();
-  console.log("Data returned by v2:");
-  console.log(JSON.stringify(response, null, 2));
-
-  const v3Client = new DynamoDB({ region: REGION });
-  response = await v3Client.listTables({});
-  console.log("\nData returned by v3:");
-  console.log(JSON.stringify(response, null, 2));
+  console.log(`\nListing identity pools`);
+  try {
+    const result = await v3Client.listDatasets(params);
+    console.log("success result: ", result);
+  } catch (e) {
+    console.log("error: ", e);
+    process.exit(1);
+  }
 })();
