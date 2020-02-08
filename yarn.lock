@@ -83,10 +83,10 @@
     "@aws-sdk/util-utf8-node" "^1.0.0-alpha.2"
     tslib "^1.8.0"
 
-"@aws-sdk/client-pinpoint@^1.0.0-alpha.14":
-  version "1.0.0-alpha.14"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-pinpoint/-/client-pinpoint-1.0.0-alpha.14.tgz#c89420a97e4941a7cd89b12838dd436263e48a8e"
-  integrity sha512-yjcYR9kKzCwex1Ji0Hnkgzn4EsncvplMB3u7HDG4s9ziaEcTzrbVfUV8Knm5Q+40QIr5pMsFp8PPW13I7H59wA==
+"@aws-sdk/client-pinpoint@^1.0.0-alpha.15":
+  version "1.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-pinpoint/-/client-pinpoint-1.0.0-alpha.15.tgz#0d672e0bc44e33f235a8f0891efa72ca384f06d4"
+  integrity sha512-uWGX/pygKKBe5kly/osPmJx/XyJijOtYIuoIPHm+kqbY+7xA/OcUg5VYT6BVTw5QSflCDXJ9s2oz0dsQbE4obg==
   dependencies:
     "@aws-crypto/sha256-browser" "^0.1.0-preview.4"
     "@aws-sdk/config-resolver" "^1.0.0-alpha.9"
@@ -98,7 +98,7 @@
     "@aws-sdk/middleware-host-header" "^1.0.0-alpha.6"
     "@aws-sdk/middleware-retry" "^1.0.0-alpha.6"
     "@aws-sdk/middleware-serde" "^1.0.0-alpha.4"
-    "@aws-sdk/middleware-signing" "^1.0.0-alpha.9"
+    "@aws-sdk/middleware-signing" "^1.0.0-alpha.10"
     "@aws-sdk/middleware-stack" "^1.0.0-alpha.4"
     "@aws-sdk/middleware-user-agent" "^1.0.0-alpha.7"
     "@aws-sdk/node-http-handler" "^1.0.0-alpha.7"
@@ -256,6 +256,16 @@
   resolved "https://registry.yarnpkg.com/@aws-sdk/middleware-serde/-/middleware-serde-1.0.0-alpha.4.tgz#6255f7eb83f85f0714c590adf47bcaafae2a6411"
   integrity sha512-zF5KDk7BNCLhXrWfPsI5wU7klK5YrAiDREiUXS5hQ6Kqld5mHiVd/PptPlR6GELy/6CDFlfuSpH4AdfXgGRexA==
   dependencies:
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    tslib "^1.8.0"
+
+"@aws-sdk/middleware-signing@^1.0.0-alpha.10":
+  version "1.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/middleware-signing/-/middleware-signing-1.0.0-alpha.10.tgz#2ed73695fd10e204bede6827d35784f24fee93db"
+  integrity sha512-k58JQrEnWtIlulHdhsElN8c76RBD0UYqj8bZJ5P+llnG83o+t1TB8AuSVPBJehYRjTGbv1GSeT6Du611LVbSQQ==
+  dependencies:
+    "@aws-sdk/protocol-http" "^1.0.0-alpha.6"
+    "@aws-sdk/signature-v4" "^1.0.0-alpha.9"
     "@aws-sdk/types" "^1.0.0-alpha.4"
     tslib "^1.8.0"
 
