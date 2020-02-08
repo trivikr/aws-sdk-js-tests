@@ -84,14 +84,14 @@
     "@aws-sdk/util-utf8-node" "^1.0.0-alpha.2"
     tslib "^1.8.0"
 
-"@aws-sdk/client-lex-runtime-service@^1.0.0-alpha.13":
-  version "1.0.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-lex-runtime-service/-/client-lex-runtime-service-1.0.0-alpha.13.tgz#68c33cc72de2cb7430993bc6e826bc58d358d236"
-  integrity sha512-WaufaiVaAgk4W39GLQlaOZxSMZap49VDgG+dSD6HS9mziCawdpTI5XRsgcEtWYQmShnHevkM1vthnI/R6648tw==
+"@aws-sdk/client-lex-runtime-service@^1.0.0-alpha.15":
+  version "1.0.0-alpha.15"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/client-lex-runtime-service/-/client-lex-runtime-service-1.0.0-alpha.15.tgz#a666b00d1bf99d65faa492a7fb8667ce3a3a7a59"
+  integrity sha512-MmBXn27bfAs1cWypYyyPaG0YrCTt8IQMkMHAlHQPPZ2Wgap0W8vJXI0QXPn4oUS+HLWDb1oZD/qcUFHfT6uanA==
   dependencies:
     "@aws-crypto/sha256-browser" "^0.1.0-preview.4"
-    "@aws-sdk/config-resolver" "^1.0.0-alpha.8"
-    "@aws-sdk/credential-provider-node" "^1.0.0-alpha.4"
+    "@aws-sdk/config-resolver" "^1.0.0-alpha.9"
+    "@aws-sdk/credential-provider-node" "^1.0.0-alpha.5"
     "@aws-sdk/fetch-http-handler" "^1.0.0-alpha.6"
     "@aws-sdk/hash-node" "^1.0.0-alpha.4"
     "@aws-sdk/invalid-dependency" "^1.0.0-alpha.2"
@@ -99,7 +99,7 @@
     "@aws-sdk/middleware-host-header" "^1.0.0-alpha.6"
     "@aws-sdk/middleware-retry" "^1.0.0-alpha.6"
     "@aws-sdk/middleware-serde" "^1.0.0-alpha.4"
-    "@aws-sdk/middleware-signing" "^1.0.0-alpha.8"
+    "@aws-sdk/middleware-signing" "^1.0.0-alpha.10"
     "@aws-sdk/middleware-stack" "^1.0.0-alpha.4"
     "@aws-sdk/middleware-user-agent" "^1.0.0-alpha.7"
     "@aws-sdk/node-http-handler" "^1.0.0-alpha.7"
@@ -130,6 +130,15 @@
     "@aws-sdk/types" "^1.0.0-alpha.4"
     tslib "^1.8.0"
 
+"@aws-sdk/config-resolver@^1.0.0-alpha.9":
+  version "1.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/config-resolver/-/config-resolver-1.0.0-alpha.9.tgz#26b5af2a39b7bda813ede96ce6b56d249573f759"
+  integrity sha512-MblSfl/sTX8CMtU+Jq5Zx1v4Hn7Yr/ky52H4HsKYPPyyKP+INgK4mrrLUYf27N9k/DlryUhbKpHFBDafK++CDg==
+  dependencies:
+    "@aws-sdk/signature-v4" "^1.0.0-alpha.9"
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    tslib "^1.8.0"
+
 "@aws-sdk/credential-provider-cognito-identity@^1.0.0-alpha.13":
   version "1.0.0-alpha.13"
   resolved "https://registry.yarnpkg.com/@aws-sdk/credential-provider-cognito-identity/-/credential-provider-cognito-identity-1.0.0-alpha.13.tgz#4a585d14816a49715497a77b2d7a422ade54969c"
@@ -148,6 +157,15 @@
   dependencies:
     "@aws-sdk/property-provider" "^1.0.0-alpha.4"
     "@aws-sdk/protocol-timestamp" "^1.0.0-alpha.4"
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    tslib "^1.8.0"
+
+"@aws-sdk/credential-provider-env@^1.0.0-alpha.5":
+  version "1.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/credential-provider-env/-/credential-provider-env-1.0.0-alpha.5.tgz#8e48b4c0a7af731c7c7efeac3b509ca22945f9e6"
+  integrity sha512-nPQURDPDXCcuEiDuniG3KgroiH0RFY8Dkr0Yk7mGRreIQTHSJqxldllgXMnUvGhVicWy/d5VJqo/HGVrnDzQRg==
+  dependencies:
+    "@aws-sdk/property-provider" "^1.0.0-alpha.4"
     "@aws-sdk/types" "^1.0.0-alpha.4"
     tslib "^1.8.0"
 
@@ -176,6 +194,19 @@
   integrity sha512-3LEyVIjM4LqCh2BVGEEyyJxzHzXRhARgkqZ4v+xiuBruDKg6GA4vvmX/s3AUpsjQEwF3M5OgP5QYUTKyCZ9dIw==
   dependencies:
     "@aws-sdk/credential-provider-env" "^1.0.0-alpha.4"
+    "@aws-sdk/credential-provider-imds" "^1.0.0-alpha.4"
+    "@aws-sdk/credential-provider-ini" "^1.0.0-alpha.4"
+    "@aws-sdk/credential-provider-process" "^1.0.0-alpha.4"
+    "@aws-sdk/property-provider" "^1.0.0-alpha.4"
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    tslib "^1.8.0"
+
+"@aws-sdk/credential-provider-node@^1.0.0-alpha.5":
+  version "1.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/credential-provider-node/-/credential-provider-node-1.0.0-alpha.5.tgz#c5dbb222b0df91d48938dee9053ba68f6e50f246"
+  integrity sha512-aP16LaUCtu6214j0rScBYJ/DITOxBEqxBj2qMgcv19JSAPCHrnJsGk8sJ9HNC9iARYvhEw2ijkPiUjrZsOoG5g==
+  dependencies:
+    "@aws-sdk/credential-provider-env" "^1.0.0-alpha.5"
     "@aws-sdk/credential-provider-imds" "^1.0.0-alpha.4"
     "@aws-sdk/credential-provider-ini" "^1.0.0-alpha.4"
     "@aws-sdk/credential-provider-process" "^1.0.0-alpha.4"
@@ -267,6 +298,16 @@
   resolved "https://registry.yarnpkg.com/@aws-sdk/middleware-serde/-/middleware-serde-1.0.0-alpha.4.tgz#6255f7eb83f85f0714c590adf47bcaafae2a6411"
   integrity sha512-zF5KDk7BNCLhXrWfPsI5wU7klK5YrAiDREiUXS5hQ6Kqld5mHiVd/PptPlR6GELy/6CDFlfuSpH4AdfXgGRexA==
   dependencies:
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    tslib "^1.8.0"
+
+"@aws-sdk/middleware-signing@^1.0.0-alpha.10":
+  version "1.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/middleware-signing/-/middleware-signing-1.0.0-alpha.10.tgz#2ed73695fd10e204bede6827d35784f24fee93db"
+  integrity sha512-k58JQrEnWtIlulHdhsElN8c76RBD0UYqj8bZJ5P+llnG83o+t1TB8AuSVPBJehYRjTGbv1GSeT6Du611LVbSQQ==
+  dependencies:
+    "@aws-sdk/protocol-http" "^1.0.0-alpha.6"
+    "@aws-sdk/signature-v4" "^1.0.0-alpha.9"
     "@aws-sdk/types" "^1.0.0-alpha.4"
     tslib "^1.8.0"
 
@@ -379,6 +420,16 @@
   dependencies:
     "@aws-sdk/is-array-buffer" "^1.0.0-alpha.2"
     "@aws-sdk/protocol-timestamp" "^1.0.0-alpha.4"
+    "@aws-sdk/types" "^1.0.0-alpha.4"
+    "@aws-sdk/util-hex-encoding" "^1.0.0-alpha.2"
+    tslib "^1.8.0"
+
+"@aws-sdk/signature-v4@^1.0.0-alpha.9":
+  version "1.0.0-alpha.9"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/signature-v4/-/signature-v4-1.0.0-alpha.9.tgz#cf98152b61e0a5e14d912946efdb358cd7bf3af0"
+  integrity sha512-zUgYfX7d6Dcby+4WhbsPgyqj2iV50vCYa5RJgbE6fi/7H8n1LoLhRSEK20moX4vBMnKJZgY7Ch3tsx50RLRDOw==
+  dependencies:
+    "@aws-sdk/is-array-buffer" "^1.0.0-alpha.2"
     "@aws-sdk/types" "^1.0.0-alpha.4"
     "@aws-sdk/util-hex-encoding" "^1.0.0-alpha.2"
     tslib "^1.8.0"
