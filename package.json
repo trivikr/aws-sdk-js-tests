@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "watch": "webpack --mode development --watch --config ./webpack.config.js --hot=true"
+    "watch": "webpack --mode development --watch --hot=true"
   },
   "repository": {
     "type": "git",
