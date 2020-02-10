@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-cognito-identity": "^1.0.0-alpha.15",
-    "@aws-sdk/client-lex-runtime-service": "^1.0.0-alpha.15",
+    "@aws-sdk/client-lex-runtime-service": "^1.0.0-alpha.16",
     "@aws-sdk/credential-provider-cognito-identity": "^1.0.0-alpha.13",
     "aws-sdk": "^2.609.0"
   }
