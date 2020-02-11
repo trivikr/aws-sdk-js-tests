@@ -14,9 +14,8 @@ const { REGION } = require("./config");
     Bucket: bucketName
   };
   const objectNames = [
-    "NameWithoutSpaces.jpg",
-    "Name With Spaces.jpg",
-    "folder1/folder2/file.jpg"
+    "NameWithoutParentheses.jpg",
+    "NameWith(Parentheses).jpg"
   ];
 
   const v2Client = new AWS.S3({ region: REGION });
