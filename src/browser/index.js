@@ -1,4 +1,6 @@
 const {
+  beforeAll,
+  afterAll,
   getV2BrowserResponse,
   getV3BrowserResponse
 } = require("../shared/utils");
@@ -38,6 +40,8 @@ const componentV3 = async () => {
 };
 
 (async () => {
+  await beforeAll();
   document.body.appendChild(await componentV2());
   document.body.appendChild(await componentV3());
+  await afterAll();
 })();

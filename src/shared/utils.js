@@ -11,7 +11,15 @@ const { REGION, IDENTITY_POOL_ID } = require("./config");
 let ShardIterator;
 
 const v2Client = new AWS.Kinesis({ region: REGION });
-const v3Client = new Kinesis({ region: REGION });
+const v3Client = new Kinesis({
+  region: REGION,
+  credentials: fromCognitoIdentityPool({
+    client: new CognitoIdentityClient({
+      region: REGION
+    }),
+    identityPoolId: IDENTITY_POOL_ID
+  })
+});
 const StreamName = `test-stream-${Math.floor(Math.random() * 10 ** 10)}`;
 
 const params = {
