@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-import {getV2BrowserResponse, getV3BrowserResponse} from '../shared/utils';
+import {getV2BrowserResponse, getV3BrowserResponse} from '../utils/src/utils';
 
 const App = () => {
   const [v2Response, setV2Response] = useState('');

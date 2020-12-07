@@ -1,7 +1,7 @@
 const {
   getV2BrowserResponse,
   getV3BrowserResponse,
-} = require("../shared/utils");
+} = require("../../shared/utils");
 
 const getHTMLElement = (title, content) => {
   const element = document.createElement("div");

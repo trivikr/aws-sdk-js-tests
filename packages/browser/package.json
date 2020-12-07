@@ -1,0 +1,26 @@
+{
+  "name": "@aws-sdk/test-browser",
+  "version": "1.0.0",
+  "description": "Browser Code Sample for testing AWS JS SDK",
+  "private": true,
+  "scripts": {
+    "start:browser": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aws-samples/aws-sdk-js-tests.git",
+    "directory": "packages/browser"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT-0",
+  "bugs": {
+    "url": "https://github.com/aws-samples/aws-sdk-js-tests/issues"
+  },
+  "homepage": "https://github.com/aws-samples/aws-sdk-js-tests#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "Code Sample for testing AWS JS SDK",
   "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "start:node": "nodemon src/node/index.js",
-    "start:browser": "webpack-dev-server",
-    "start:react-native": "expo start --config src/reactnative/app.json"
+    "start:node": "(cd packages/node && yarn start:node)",
+    "start:browser": "(cd packages/browser && yarn start:browser)",
+    "start:react-native-ios": "(cd packages/reactnative && yarn start:react-native-ios)"
   },
   "repository": {
     "type": "git",
@@ -20,11 +23,9 @@
   },
   "homepage": "https://github.com/aws-samples/aws-sdk-js-tests#readme",
   "devDependencies": {
-    "expo": "~37.0.12",
-    "expo-cli": "^3.28.2",
     "husky": ">=1",
+    "lerna": "^3.20.2",
     "lint-staged": ">=10.0.7",
-    "nodemon": "^2.0.4",
     "prettier": "2.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",

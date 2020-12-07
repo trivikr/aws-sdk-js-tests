@@ -1,0 +1,23 @@
+{
+  "name": "@aws-sdk/test-node",
+  "version": "1.0.0",
+  "description": "Node.js Code Sample for testing AWS JS SDK",
+  "scripts": {
+    "start:node": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aws-samples/aws-sdk-js-tests.git",
+    "directory": "packages/node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT-0",
+  "bugs": {
+    "url": "https://github.com/aws-samples/aws-sdk-js-tests/issues"
+  },
+  "homepage": "https://github.com/aws-samples/aws-sdk-js-tests#readme",
+  "devDependencies": {
+    "nodemon": "2.0.4"
+  }
+}

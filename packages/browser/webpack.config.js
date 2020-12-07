@@ -3,7 +3,7 @@ const path = require("path");
 module.exports = {
   mode: "development",
   entry: {
-    main: "./src/browser/index.js",
+    main: "./src/index.js",
   },
   devServer: {
     contentBase: path.join(__dirname, "public"),

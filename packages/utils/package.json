@@ -1,0 +1,26 @@
+{
+  "name": "@aws-sdk/test-utils",
+  "version": "1.0.0",
+  "description": "Utilities for testing AWS JS SDK",
+  "scripts": {
+    "start:browser": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aws-samples/aws-sdk-js-tests.git",
+    "directory": "packages/utils"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT-0",
+  "bugs": {
+    "url": "https://github.com/aws-samples/aws-sdk-js-tests/issues"
+  },
+  "homepage": "https://github.com/aws-samples/aws-sdk-js-tests#readme",
+  "dependencies": {
+    "@aws-sdk/client-cognito-identity": "1.0.0-rc.8",
+    "@aws-sdk/client-dynamodb": "1.0.0-rc.8",
+    "@aws-sdk/credential-provider-cognito-identity": "1.0.0-rc.8",
+    "aws-sdk": "2.804.0"
+  }
+}
