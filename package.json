@@ -23,6 +23,9 @@
     "url": "https://github.com/aws-samples/aws-sdk-js-tests/issues"
   },
   "homepage": "https://github.com/aws-samples/aws-sdk-js-tests#readme",
+  "dependencies": {
+    "react-native": "*"
+  },
   "devDependencies": {
     "husky": "4.3.6",
     "lerna": "3.22.1",
