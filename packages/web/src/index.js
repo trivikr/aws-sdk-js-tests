@@ -2,7 +2,7 @@ const {
   utils: { getV2BrowserResponse, getV3BrowserResponse },
 } = require("@aws-sdk/test-utils");
 
-const getHTMLElement = (sdkVersion, content) => {
+const getHTMLElement = (sdkVersion) => {
   const element = document.createElement("div");
   element.style.margin = "30px";
 
@@ -16,7 +16,7 @@ const getHTMLElement = (sdkVersion, content) => {
   const contentDiv = document.createElement("textarea");
   contentDiv.rows = 20;
   contentDiv.cols = 50;
-  contentDiv.innerHTML = content;
+  contentDiv.innerHTML = "Response will populate here";
 
   element.appendChild(titleDiv);
   element.appendChild(buttonDiv);
@@ -37,6 +37,6 @@ const componentV3 = async () => {
 };
 
 (async () => {
-  document.body.appendChild(await componentV2());
-  document.body.appendChild(await componentV3());
+  document.body.appendChild(getHTMLElement("v2"));
+  document.body.appendChild(getHTMLElement("v3"));
 })();
