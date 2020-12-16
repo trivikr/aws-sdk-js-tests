@@ -8,8 +8,11 @@ const getHTMLElement = (sdkVersion, content) => {
 
   const titleDiv = document.createElement("div");
   titleDiv.innerHTML = `JS SDK ${sdkVersion}`;
+
   const buttonDiv = document.createElement("button");
+  buttonDiv.setAttribute("style", "margin: 10px 0px;");
   buttonDiv.innerHTML = `Call listTables with JS SDK ${sdkVersion}`;
+
   const contentDiv = document.createElement("textarea");
   contentDiv.rows = 20;
   contentDiv.cols = 50;
@@ -17,6 +20,7 @@ const getHTMLElement = (sdkVersion, content) => {
 
   element.appendChild(titleDiv);
   element.appendChild(buttonDiv);
+  element.appendChild(document.createElement("br"));
   element.appendChild(contentDiv);
 
   return element;
