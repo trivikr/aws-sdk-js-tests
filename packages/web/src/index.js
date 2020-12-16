@@ -37,6 +37,8 @@ const componentV3 = async () => {
 };
 
 (async () => {
-  document.body.appendChild(await componentV2());
-  document.body.appendChild(await componentV3());
+  // document.body.appendChild(await componentV2());
+  // document.body.appendChild(await componentV3());
 })();
+
+export const sayHello = () => console.log("Hello");

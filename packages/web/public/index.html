@@ -2,8 +2,31 @@
 <html>
   <head>
     <title>Testing AWS JavaScript SDK</title>
+    <style>
+      .section-container {
+        margin: 30px;
+      }
+      .title {
+        font-size: 24px;
+        font-weight: 600;
+      }
+      .response {
+        height: 20em;
+        width: 50em;
+      }
+    </style>
+    <script src="main.js"></script>
   </head>
   <body>
-    <script src="main.js"></script>
+    <div id="v2" class="section-container">
+      <div class="title">JS SDK v2</div>
+      <button onclick="sayHello()">Call listTables with JS SDK v2</button>
+      <textarea class="response"></textarea>
+    </div>
+    <div id="v3" class="section-container">
+      <div class="title">JS SDK v3</div>
+      <button onclick="sayHello()">Call listTables with JS SDK v3</button>
+      <textarea class="response"></textarea>
+    </div>
   </body>
 </html>
